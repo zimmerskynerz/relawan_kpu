@@ -3,6 +3,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
 {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('relawan/insert_model');
+		$this->load->model('relawan/select_model');
+		$this->load->model('relawan/update_model');
+		$this->set_timezone();
+	}
+	public function set_timezone()
+	{
+		date_default_timezone_set("Asia/Jakarta");
+	}
 	public function index()
 	{
 		$cek_data = $this->db->get_where('tbl_login', ['id_login' => $this->session->userdata('id_login')])->row_array();
@@ -62,5 +74,19 @@ class Auth extends CI_Controller
 	{
 		$this->session->sess_destroy();
 		redirect('login');
+	}
+	public function cruddaftar()
+	{
+		$email     = htmlentities($this->input->post('email'));
+		$cek_email = $this->db->get_where('tbl_login', ['email' => $email])->row_array();
+		if ($cek_email > 1) :
+			# code...
+			$this->session->set_flashdata('email_ada', '<div class="alert alert-danger" id="email_ada" role="alert">Email sudah terdaftar!</div>');
+			redirect('daftar');
+		else :
+			$this->insert_model->tambah_login();
+			$this->session->set_flashdata('berhasil_daftar', '<div class="alert alert-success" id="berhasil_daftar" role="alert">Berhasil Daftar, SIlahkan Login!</div>');
+			redirect('login');
+		endif;
 	}
 }

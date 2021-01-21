@@ -37,6 +37,7 @@
 				<div class="form-container">
 					<div class="form-content">
 						<img src="<?= base_url('assets/img/bg_kpu.png') ?>" width="100%" alt="">
+						<?= $this->session->flashdata('berhasil_daftar'); ?>
 						<?= $this->session->flashdata('pesan_gagal_username'); ?>
 						<?= $this->session->flashdata('pesan_gagal_password'); ?>
 						<?= $this->session->flashdata('pesan_paksa_logout'); ?>

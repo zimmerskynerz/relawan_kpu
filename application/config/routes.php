@@ -34,4 +34,6 @@ $route['staff/bank_soal/jawabansoal']           = 'staff/ControllerStaffSoal/jaw
 $route['staff/relawan/pendaftaran']             = 'staff/ControllerStaffPendaftaran/index';
 $route['staff/relawan/tampil_berkas/(:any)']    = 'staff/ControllerStaffPendaftaran/tampil_berkas/$1';
 $route['staff/relawan/crudpendaftaran']         = 'staff/ControllerStaffPendaftaran/crudpendaftaran';
-// Menu 
+
+
+// Halaman Relawan
