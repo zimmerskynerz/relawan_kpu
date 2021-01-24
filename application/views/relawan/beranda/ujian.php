@@ -41,7 +41,7 @@
                                                 ?>
                                             </td>
                                             <td style="text-align: center;">
-                                                <a href="<?= base_url('staff/bank_soal/lihat_soal/' . $Data_bank->id_ujian . '') ?>" class="bs-tooltip" data-placement="top" title="" data-original-title="Lihat Soal">
+                                                <a type="button" data-id="<?= $Data_bank->id_ujian ?>" class="bs-tooltip openModal" data-placement="top" title="" data-original-title="Lihat Soal">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
                                                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                                         <circle cx="12" cy="12" r="3"></circle>
@@ -62,3 +62,25 @@
         <?php $this->load->view('staff/include/copyright') ?>
     </div>
 </div>
+
+<script src="<?= base_url(); ?>assets/plugins/sweetalerts/sweetalert2.min.js"></script>
+<script>
+    $('.openModal').on('click', function(e) {
+        e.preventDefault();
+        var IDUJIAN = $(this).data('id');
+        swal({
+                title: 'Yakin Anda Ingin Mengerjakan Ujian?',
+                text: "Klik yakin untuk melanjutkan",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yakin',
+                cancelButtonText: 'Batal',
+                padding: '2em'
+            })
+            .then((result) => {
+                if (result.value) {
+                    window.location.href = "<?= base_url('relawan/ujian/mulai/') ?>" + IDUJIAN
+                }
+            });
+    })
+</script>

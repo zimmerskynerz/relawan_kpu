@@ -39,7 +39,7 @@ class ControllerRelawanBeranda extends CI_Controller
                 // Halaman dimana Relawan Dikonfirmasi Lulus Administrasi dan siap ujian
                 $halaman      = 'ujian';
                 $aktifitas    = 'limit';
-            elseif ($data_login['status'] == 'SELESAI') :
+            elseif ($data_login['status'] == 'UJIAN_SELESAI') :
                 // Relawan Menunggu Konfirmasi Berkas Dari Staff
                 $halaman      = 'ujian';
                 $aktifitas    = 'selesai';
