@@ -61,3 +61,7 @@ $('.sukses_ubah_soal').show(function () {
 $('.sukses_hapus_soal').show(function () {
   swal('Berhasil!', 'Soal Berhasil Dihapus!', 'success');
 });
+// Kelola Pendaftaran
+$('.berhasil_konfirmasi').show(function () {
+  swal('Berhasil!', 'Konfirmasi Administrasi!', 'success');
+});

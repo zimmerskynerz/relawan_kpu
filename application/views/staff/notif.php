@@ -20,3 +20,5 @@
 <?= $this->session->flashdata('sukses_tambah_soal'); ?>
 <?= $this->session->flashdata('sukses_ubah_soal'); ?>
 <?= $this->session->flashdata('sukses_hapus_soal'); ?>
+<!-- Kelola Pendaftaran -->
+<?= $this->session->flashdata('berhasil_konfirmasi'); ?>

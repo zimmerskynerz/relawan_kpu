@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Jan 2021 pada 05.53
+-- Waktu pembuatan: 24 Jan 2021 pada 05.21
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.3.25
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `relawan` (
-  `id_relawan` varchar(12) NOT NULL,
+  `id_relawan` int(9) NOT NULL,
   `id_periode` int(5) NOT NULL,
   `id_tugas` int(9) DEFAULT NULL,
   `status` text NOT NULL
@@ -41,12 +41,26 @@ CREATE TABLE `relawan` (
 --
 
 CREATE TABLE `tbl_berkas` (
-  `id_relawan` varchar(12) NOT NULL,
+  `id_relawan` int(9) NOT NULL,
   `nm_berkas` text NOT NULL,
-  `ket_berkas` text NOT NULL,
-  `scan_berkas` text NOT NULL,
-  `status` text NOT NULL
+  `link_berkas` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tbl_berkas`
+--
+
+INSERT INTO `tbl_berkas` (`id_relawan`, `nm_berkas`, `link_berkas`) VALUES
+(1, 'ktp', 'fae1fdf7d9770e9f0caf5b4cf642fc32.png'),
+(1, 'ijazah', 'ac7f90953878b09462a7668e1d101015.png'),
+(1, 'foto', '83bc09cda6182502782afea280caaf2d.png'),
+(1, 'surat_parpol', '308505f0a611bfa9140b3c1a0625538f.png'),
+(1, 'surat_kesediaan', '8ffb881b5271b4cc94c37326b408ce92.png'),
+(1, 'surat_pemilih', '4ac3724557f136a697a326b0526a0030.png'),
+(1, 'skck', '6a5506311de1339ebb44e718f7434d72.png'),
+(1, 'bukan_anggotakpu', 'fe8590aaf0b76a4a9a8178f703ff604e.png'),
+(1, 'sertifikat', 'e8188cd7238b4a3b7600aee229e10137.png'),
+(1, 'riwayat_hidup', '175371b83b0815ad03a058e340f231ba.png');
 
 -- --------------------------------------------------------
 
@@ -56,7 +70,7 @@ CREATE TABLE `tbl_berkas` (
 
 CREATE TABLE `tbl_gaji` (
   `id_gaji` bigint(20) NOT NULL,
-  `id_relawan` varchar(12) NOT NULL,
+  `id_relawan` int(9) NOT NULL,
   `jml_gaji` int(9) NOT NULL,
   `tgl_keluar` date DEFAULT NULL,
   `tgl_diambil` date DEFAULT NULL,
@@ -143,10 +157,30 @@ INSERT INTO `tbl_jawaban` (`id_soal`, `jawaban`, `ket_jawaban`) VALUES
 --
 
 CREATE TABLE `tbl_jawaban_relawan` (
-  `id_relawan` varchar(12) DEFAULT NULL,
+  `id_relawan` int(9) DEFAULT NULL,
   `id_soal` bigint(20) NOT NULL,
   `jawaban` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_konfirmasi`
+--
+
+CREATE TABLE `tbl_konfirmasi` (
+  `id_konfirmasi` int(9) NOT NULL,
+  `id_login` bigint(20) NOT NULL,
+  `tgl_konfirmasi` date NOT NULL,
+  `alasan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tbl_konfirmasi`
+--
+
+INSERT INTO `tbl_konfirmasi` (`id_konfirmasi`, `id_login`, `tgl_konfirmasi`, `alasan`) VALUES
+(1, 3, '2021-01-24', 'Foto Kurang Persisi');
 
 -- --------------------------------------------------------
 
@@ -169,7 +203,8 @@ CREATE TABLE `tbl_login` (
 
 INSERT INTO `tbl_login` (`id_login`, `email`, `password`, `level`, `status`, `tgl_daftar`) VALUES
 (1, 'staff@kpu.co.id', '$2y$10$MqUBpjBHKNir5BA0u79hXuj/2n3Xs2iM3/vrpEzPD.37/lKXwvA7a', 'staff', 'AKTIF', '2021-01-01'),
-(2, 'staff01@kpu.co.id', '$2y$10$5hg3i51jWY4AdjGjM0gGkeLyDth19dg9xDSVLLkDEiKpNKdlsye3a', 'staff', 'AKTIF', '2021-01-18');
+(2, 'staff01@kpu.co.id', '$2y$10$5hg3i51jWY4AdjGjM0gGkeLyDth19dg9xDSVLLkDEiKpNKdlsye3a', 'staff', 'AKTIF', '2021-01-18'),
+(3, 'rama@gmail.com', '$2y$10$MqUBpjBHKNir5BA0u79hXuj/2n3Xs2iM3/vrpEzPD.37/lKXwvA7a', 'relawan', 'UJIAN', '2021-01-22');
 
 -- --------------------------------------------------------
 
@@ -178,7 +213,7 @@ INSERT INTO `tbl_login` (`id_login`, `email`, `password`, `level`, `status`, `tg
 --
 
 CREATE TABLE `tbl_nilai_ujian` (
-  `id_relawan` varchar(12) NOT NULL,
+  `id_relawan` int(9) NOT NULL,
   `id_periode` int(5) NOT NULL,
   `id_ujian` int(5) NOT NULL,
   `nilai_ujian` float NOT NULL
@@ -215,14 +250,22 @@ INSERT INTO `tbl_periode` (`id_periode`, `tahun`, `tgl_mulai`, `tgl_selesai`, `j
 
 CREATE TABLE `tbl_relawan` (
   `id_login` bigint(20) NOT NULL,
-  `id_relawan` varchar(12) NOT NULL,
+  `id_relawan` int(9) NOT NULL,
   `nm_relawan` text NOT NULL,
   `tgl_lahir` date DEFAULT NULL,
   `kota_lahir` text DEFAULT NULL,
   `j_kelamin` enum('L','P') DEFAULT NULL,
+  `no_hp` text DEFAULT NULL,
   `alamat` text DEFAULT NULL,
   `gaji` int(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tbl_relawan`
+--
+
+INSERT INTO `tbl_relawan` (`id_login`, `id_relawan`, `nm_relawan`, `tgl_lahir`, `kota_lahir`, `j_kelamin`, `no_hp`, `alamat`, `gaji`) VALUES
+(3, 1, 'Rama Restu Wardana', '2021-01-23', 'Kudus', 'L', '0895411547434', 'Jl. Sumber - Hadipolo, RT. 05/ RW.05, Kec. Jekulo, Kab. Kudus - Jawa Tengah', NULL);
 
 -- --------------------------------------------------------
 
@@ -325,14 +368,14 @@ ALTER TABLE `relawan`
 -- Indeks untuk tabel `tbl_berkas`
 --
 ALTER TABLE `tbl_berkas`
-  ADD KEY `use_id_relawan009` (`id_relawan`);
+  ADD KEY `use_id_relawan02` (`id_relawan`);
 
 --
 -- Indeks untuk tabel `tbl_gaji`
 --
 ALTER TABLE `tbl_gaji`
   ADD PRIMARY KEY (`id_gaji`),
-  ADD KEY `use_id_relawan04` (`id_relawan`);
+  ADD KEY `use_id_relawan05` (`id_relawan`);
 
 --
 -- Indeks untuk tabel `tbl_jawaban`
@@ -344,8 +387,15 @@ ALTER TABLE `tbl_jawaban`
 -- Indeks untuk tabel `tbl_jawaban_relawan`
 --
 ALTER TABLE `tbl_jawaban_relawan`
-  ADD KEY `use_id_relawan02` (`id_relawan`),
-  ADD KEY `use_id_soal01` (`id_soal`);
+  ADD KEY `use_id_soal01` (`id_soal`),
+  ADD KEY `use_id_relawan03` (`id_relawan`);
+
+--
+-- Indeks untuk tabel `tbl_konfirmasi`
+--
+ALTER TABLE `tbl_konfirmasi`
+  ADD PRIMARY KEY (`id_konfirmasi`),
+  ADD KEY `use_id_login90` (`id_login`);
 
 --
 -- Indeks untuk tabel `tbl_login`
@@ -359,8 +409,8 @@ ALTER TABLE `tbl_login`
 --
 ALTER TABLE `tbl_nilai_ujian`
   ADD KEY `use_id_periode02` (`id_periode`),
-  ADD KEY `use_id_relawan03` (`id_relawan`),
-  ADD KEY `use_id_ujian02` (`id_ujian`);
+  ADD KEY `use_id_ujian02` (`id_ujian`),
+  ADD KEY `use_id_relawan04` (`id_relawan`);
 
 --
 -- Indeks untuk tabel `tbl_periode`
@@ -412,16 +462,28 @@ ALTER TABLE `tbl_gaji`
   MODIFY `id_gaji` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `tbl_konfirmasi`
+--
+ALTER TABLE `tbl_konfirmasi`
+  MODIFY `id_konfirmasi` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT untuk tabel `tbl_login`
 --
 ALTER TABLE `tbl_login`
-  MODIFY `id_login` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_login` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_periode`
 --
 ALTER TABLE `tbl_periode`
   MODIFY `id_periode` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_relawan`
+--
+ALTER TABLE `tbl_relawan`
+  MODIFY `id_relawan` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_soal`
@@ -457,13 +519,13 @@ ALTER TABLE `relawan`
 -- Ketidakleluasaan untuk tabel `tbl_berkas`
 --
 ALTER TABLE `tbl_berkas`
-  ADD CONSTRAINT `use_id_relawan009` FOREIGN KEY (`id_relawan`) REFERENCES `tbl_relawan` (`id_relawan`);
+  ADD CONSTRAINT `use_id_relawan02` FOREIGN KEY (`id_relawan`) REFERENCES `tbl_relawan` (`id_relawan`);
 
 --
 -- Ketidakleluasaan untuk tabel `tbl_gaji`
 --
 ALTER TABLE `tbl_gaji`
-  ADD CONSTRAINT `use_id_relawan04` FOREIGN KEY (`id_relawan`) REFERENCES `tbl_relawan` (`id_relawan`);
+  ADD CONSTRAINT `use_id_relawan05` FOREIGN KEY (`id_relawan`) REFERENCES `tbl_relawan` (`id_relawan`);
 
 --
 -- Ketidakleluasaan untuk tabel `tbl_jawaban`
@@ -475,15 +537,21 @@ ALTER TABLE `tbl_jawaban`
 -- Ketidakleluasaan untuk tabel `tbl_jawaban_relawan`
 --
 ALTER TABLE `tbl_jawaban_relawan`
-  ADD CONSTRAINT `use_id_relawan02` FOREIGN KEY (`id_relawan`) REFERENCES `tbl_relawan` (`id_relawan`),
+  ADD CONSTRAINT `use_id_relawan03` FOREIGN KEY (`id_relawan`) REFERENCES `tbl_relawan` (`id_relawan`),
   ADD CONSTRAINT `use_id_soal01` FOREIGN KEY (`id_soal`) REFERENCES `tbl_soal` (`id_soal`);
+
+--
+-- Ketidakleluasaan untuk tabel `tbl_konfirmasi`
+--
+ALTER TABLE `tbl_konfirmasi`
+  ADD CONSTRAINT `use_id_login90` FOREIGN KEY (`id_login`) REFERENCES `tbl_login` (`id_login`);
 
 --
 -- Ketidakleluasaan untuk tabel `tbl_nilai_ujian`
 --
 ALTER TABLE `tbl_nilai_ujian`
   ADD CONSTRAINT `use_id_periode02` FOREIGN KEY (`id_periode`) REFERENCES `tbl_periode` (`id_periode`),
-  ADD CONSTRAINT `use_id_relawan03` FOREIGN KEY (`id_relawan`) REFERENCES `tbl_relawan` (`id_relawan`),
+  ADD CONSTRAINT `use_id_relawan04` FOREIGN KEY (`id_relawan`) REFERENCES `tbl_relawan` (`id_relawan`),
   ADD CONSTRAINT `use_id_ujian02` FOREIGN KEY (`id_ujian`) REFERENCES `tbl_ujian` (`id_ujian`);
 
 --

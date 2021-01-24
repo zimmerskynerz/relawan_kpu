@@ -1,0 +1,14 @@
+calon relawan
+
+username : rama@gmail.com
+password : SALOKU123abc
+
+1. Ujian dilaksanakan sesuai tanggal pada tabel periode, mulai dan selesainya.
+2. Jumlah soal sesuai ygn tertulis di tabel Ujian
+3. soal random
+4. sebelum mengerjakan soal, ada modal konfirmasi "Yakin anda ingin mengerjakan ujian?"
+5. setelah ujian selesai, status relawan pada tbl_login = UJIAN_SELESAI
+6. setelah ujian, nilai relawan otomatis terisi dengan perhitungan, (100/jumlah soal)*jawaban benar, dan menambah nilai ke tbl_nilai_ujian
+7. setelah ujian selesai, view beranda menuju ke menunggu konfirmasi ujian selesai dengan menampilkan jumlah nilai
+
+*Sementara itu dulu, sama benahin tulisan yg ada di beranda h3/h4 dibuat tengah halaman.

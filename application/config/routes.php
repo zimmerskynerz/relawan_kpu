@@ -37,3 +37,6 @@ $route['staff/relawan/crudpendaftaran']         = 'staff/ControllerStaffPendafta
 
 
 // Halaman Relawan
+$route['relawan']                                       = 'relawan/ControllerRelawanBeranda/index';
+$route['relawan/beranda']                               = 'relawan/ControllerRelawanBeranda/index';
+$route['relawan/beranda/cruddaftar']                    = 'relawan/ControllerRelawanBeranda/cruddaftar';

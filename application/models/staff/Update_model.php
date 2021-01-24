@@ -134,4 +134,47 @@ class Update_model extends CI_Model
         $this->db->where('id_soal', htmlspecialchars($this->input->post('id_soal')));
         $this->db->update('tbl_soal', $data);
     }
+    // Kelola Pendaftaran
+    public function terima_relawan()
+    {
+        $data_diri = array(
+            'status' => 'UJIAN'
+        );
+        $this->db->where('id_login', htmlspecialchars($this->input->post('id_login')));
+        $this->db->update('tbl_login', $data_diri);
+    }
+    public function revisi_relawan()
+    {
+        $data_diri = array(
+            'status' => 'PROSES_DAFTAR'
+        );
+        $this->db->where('id_login', htmlspecialchars($this->input->post('id_login')));
+        $this->db->update('tbl_login', $data_diri);
+        $data_konfirmasi = array(
+            'id_konfirmasi'     => '',
+            'id_login'          => htmlspecialchars($this->input->post('id_login')),
+            'tgl_konfirmasi'    => date('Y-m-d'),
+            'alasan'            => htmlspecialchars($this->input->post('alasan'))
+        );
+        $this->db->insert('tbl_konfirmasi', $data_konfirmasi);
+        $this->db->where('id_relawan', htmlspecialchars($this->input->post('id_relawan')));
+        $this->db->delete('tbl_berkas');
+    }
+    public function tolak_relawan()
+    {
+        $data_diri = array(
+            'status' => 'GAGAL'
+        );
+        $this->db->where('id_login', htmlspecialchars($this->input->post('id_login')));
+        $this->db->update('tbl_login', $data_diri);
+        $data_konfirmasi = array(
+            'id_konfirmasi'     => '',
+            'id_login'          => htmlspecialchars($this->input->post('id_login')),
+            'tgl_konfirmasi'    => date('Y-m-d'),
+            'alasan'            => htmlspecialchars($this->input->post('alasan'))
+        );
+        $this->db->insert('tbl_konfirmasi', $data_konfirmasi);
+        $this->db->where('id_relawan', htmlspecialchars($this->input->post('id_relawan')));
+        $this->db->delete('tbl_berkas');
+    }
 }

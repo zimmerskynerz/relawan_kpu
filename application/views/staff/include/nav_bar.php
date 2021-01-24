@@ -91,19 +91,19 @@
                             </a>
                             <ul class="collapse submenu list-unstyled animated fadeInUp" id="components" data-parent="#topAccordion">
                                 <li>
-                                    <a href="component_tabs.html"> Pendaftaran </a>
+                                    <a href="<?= base_url('staff/relawan/pendaftaran') ?>"> Pendaftaran </a>
                                 </li>
                                 <li>
-                                    <a href="component_modal.html"> Nilai Ujian </a>
+                                    <a href="<?= base_url('staff/relawan/nilai') ?>"> Nilai Ujian </a>
                                 </li>
                                 <li>
-                                    <a href="component_cards.html"> Data Relawan </a>
+                                    <a href="<?= base_url('staff/relawan/relawan') ?>"> Data Relawan </a>
                                 </li>
                                 <li>
-                                    <a href="component_cards.html"> Tugas Relawan </a>
+                                    <a href="<?= base_url('staff/relawan/tugas') ?>"> Tugas Relawan </a>
                                 </li>
                                 <li>
-                                    <a href="component_cards.html"> Gaji Relawan </a>
+                                    <a href="<?= base_url('staff/relawan/gaji') ?>"> Gaji Relawan </a>
                                 </li>
                             </ul>
                         </li>

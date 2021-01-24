@@ -42,4 +42,24 @@ class Select_model extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+    function getDataCalonRelawan()
+    {
+        $query = $this->db->select('*');
+        $query = $this->db->from('tbl_login as A');
+        $query = $this->db->join('tbl_relawan as B', 'A.id_login=B.id_login');
+        $query = $this->db->where('A.status', 'DAFTAR');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    // Ambil data calon pendaftaran
+    function getDataDiriCalonRelawan($id_relawan)
+    {
+        $query = $this->db->select('*');
+        $query = $this->db->from('tbl_login as A');
+        $query = $this->db->join('tbl_relawan as B', 'A.id_login=B.id_login');
+        $query = $this->db->where('A.status', 'DAFTAR');
+        $query = $this->db->where('B.id_relawan', $id_relawan);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
 }

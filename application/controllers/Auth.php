@@ -41,7 +41,7 @@ class Auth extends CI_Controller
 	{
 		$email   = htmlspecialchars($this->input->post('email'));
 		$password   = htmlspecialchars($this->input->post('password'));
-		$cek_login  = $this->db->get_where('tbl_login', ['email' => $email, 'status' => 'AKTIF'])->row_array();
+		$cek_login  = $this->db->get_where('tbl_login', ['email' => $email])->row_array();
 		if ($cek_login > 0) :
 			if (password_verify($password, $cek_login['password'])) :
 				$data_login = array(

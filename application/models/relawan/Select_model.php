@@ -29,7 +29,7 @@ class Select_model extends CI_Model
         $query = $this->db->from('tbl_ujian as A');
         $query = $this->db->join('tbl_periode as B', 'A.id_periode=B.id_periode');
         $query = $this->db->where('B.status', 'ADA');
-        $query = $this->db->where('A.status !=', 'HAPUS');
+        $query = $this->db->where('A.status', 'AKTIF');
         $query = $this->db->get();
         return $query->result();
     }
@@ -41,5 +41,14 @@ class Select_model extends CI_Model
         $query = $this->db->where('id_ujian', $id_ujian);
         $query = $this->db->get();
         return $query->result();
+    }
+    function getKonfirmasi()
+    {
+        $query = $this->db->select('*');
+        $query = $this->db->from('tbl_konfirmasi');
+        $query = $this->db->where('id_login', $this->session->userdata('id_login'));
+        $query = $this->db->order_by('id_konfirmasi', 'DESC');
+        $query = $this->db->get();
+        return $query->row_array();
     }
 }

@@ -27,4 +27,31 @@ class Insert_model extends CI_Model
         );
         $this->db->insert('tbl_relawan', $data_relawan);
     }
+    function kirim_berkas()
+    {
+        $id_relawan = htmlspecialchars($this->input->post('id_relawan'));
+        $config['upload_path']          = './assets/berkas';
+        $config['allowed_types']        = 'jpg|png|gif|jpeg';
+        $config['encrypt_name']         = true;
+        $config['overwrite']            = true;
+        $config['max_size']             = 10024; // 10MB
+        $this->load->library('upload', $config);
+        $keterangan_berkas = $this->input->post('keterangan');
+        $jumlah_berkas = count($_FILES['berkas']['name']);
+        for ($i = 0; $i < $jumlah_berkas; $i++) {
+            if (!empty($_FILES['berkas']['name'][$i])) {
+                $_FILES['file']['name'] = $_FILES['berkas']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['berkas']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['berkas']['tmp_name'][$i];
+                $_FILES['file']['size'] = $_FILES['berkas']['size'][$i];
+                if ($this->upload->do_upload('file')) {
+                    $uploadData = $this->upload->data();
+                    $data['id_relawan'] = $id_relawan;
+                    $data['nm_berkas'] = $keterangan_berkas[$i];
+                    $data['link_berkas'] = $uploadData['file_name'];
+                    $this->db->insert('tbl_berkas', $data);
+                }
+            }
+        }
+    }
 }
