@@ -1,6 +1,6 @@
-<?php
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
-defined('BASEPATH') or exit('No direct script access allowed');
+use Carbon\Carbon;
 
 class ControllerRelawanBeranda extends CI_Controller
 {
@@ -22,6 +22,7 @@ class ControllerRelawanBeranda extends CI_Controller
         $data_diri  = $this->db->get_where('tbl_relawan', ['id_login' => $this->session->userdata('id_login')])->row_array();
         $data_konfirmasi = $this->select_model->getKonfirmasi();
         $data_soal  = $this->select_model->getDataSoalPeriode();
+        $data_soal  = self::isSelesai($data_soal);
         if ($data_login['level'] == 'relawan') :
             if ($data_login['status'] == 'PROSES_DAFTAR') :
                 // Relawan Baru Daftar atau Ditolak pendaftarannya karena tidak memenuhi syarat
@@ -73,6 +74,36 @@ class ControllerRelawanBeranda extends CI_Controller
             $this->session->set_flashdata('sukses_kirim_berkas', '<div class="sukses_kirim_berkas"></div>');
             redirect('relawan');
         endif;
+    }
+
+    /**
+     * time based validation
+     * 
+     * @param object $query
+     * @return object $query
+     */
+    public static function isSelesai($query)
+    {
+        $new_data_ujian = [];
+        if (count($query) > 0) {
+            foreach ($query as $data) {
+                $now    = Carbon::now();
+                $start  = Carbon::createFromFormat('Y-m-d', $data->tgl_mulai)->format('Y-m-d');
+                $end    = Carbon::createFromFormat('Y-m-d', $data->tgl_selesai)->format('Y-m-d');
+
+                $start  = Carbon::parse($start);
+                $end    = Carbon::parse($end);
+                if ($now->between($start, $end)) {
+                    $data->isSelesai = false;
+                } else {
+                    $data->isSelesai = true;
+                }
+
+                $new_data_ujian[] = $data;
+            }
+        }
+
+        return $new_data_ujian;
     }
 }
         

@@ -29,7 +29,7 @@
                                         <tr>
                                             <td class="checkbox-column text-center"><?= $no; ?></td>
                                             <td style="text-align: center;"><?= $Data_bank->tahun ?></td>
-                                            <td><?= date('d F Y', strtotime($Data_bank->tgl_mulai)) ?> - <?= date('d F Y', strtotime($Data_bank->tgl_selesai)) ?></td>
+                                            <td class="text-center"><?= date('d F Y', strtotime($Data_bank->tgl_mulai)) ?> - <?= date('d F Y', strtotime($Data_bank->tgl_selesai)) ?></td>
                                             <td style="text-align: center;"><?= $Data_bank->jml_soal ?> Soal</td>
                                             <td style="text-align: center;">
                                                 <?php
@@ -41,11 +41,18 @@
                                                 ?>
                                             </td>
                                             <td style="text-align: center;">
-                                                <a type="button" data-id="<?= $Data_bank->id_ujian ?>" class="bs-tooltip openModal" data-placement="top" title="" data-original-title="Lihat Soal">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
+                                                <a type="button" data-id="<?= $Data_bank->id_ujian ?>" class="bs-tooltip <?= ($Data_bank->isSelesai) ? 'disable' : 'openModal' ?>" data-placement="top" title="" data-original-title="<?= ($Data_bank->isSelesai) ? 'Ujian sudah selesai' : 'Lihat Soal' ?>">
+                                                    <?= ($Data_bank->isSelesai) ?
+                                                        '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-slash">
+                                                        <circle cx="12" cy="12" r="10"></circle>
+                                                        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                                                        </svg>'
+                                                        :
+                                                        '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
                                                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                                         <circle cx="12" cy="12" r="3"></circle>
-                                                    </svg>
+                                                        </svg>' ?>
+
                                                 </a>
                                             </td>
                                         </tr>
