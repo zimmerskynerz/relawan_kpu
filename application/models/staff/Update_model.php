@@ -42,6 +42,30 @@ class Update_model extends CI_Model
         $this->db->where('id_login', htmlspecialchars($this->input->post('id_login')));
         $this->db->update('tbl_login', $data_login);
     }
+    function reset_password_relawan()
+    {
+        $data_login = array(
+            'password'       => password_hash('RELAWAN123abc', PASSWORD_DEFAULT)
+        );
+        $this->db->where('id_login', htmlspecialchars($this->input->post('id_login')));
+        $this->db->update('tbl_login', $data_login);
+    }
+    function blokir_relawan()
+    {
+        $data_login = array(
+            'status'       => 'BLOKIR'
+        );
+        $this->db->where('id_login', htmlspecialchars($this->input->post('id_login')));
+        $this->db->update('tbl_login', $data_login);
+    }
+    function aktif_relawan()
+    {
+        $data_login = array(
+            'status'       => 'AKTIF'
+        );
+        $this->db->where('id_login', htmlspecialchars($this->input->post('id_login')));
+        $this->db->update('tbl_login', $data_login);
+    }
     // Kelola Data Periode
     function ubah_periode()
     {
@@ -176,5 +200,47 @@ class Update_model extends CI_Model
         $this->db->insert('tbl_konfirmasi', $data_konfirmasi);
         $this->db->where('id_relawan', htmlspecialchars($this->input->post('id_relawan')));
         $this->db->delete('tbl_berkas');
+    }
+    public function terima_calon_relawan()
+    {
+        $data_login = array(
+            'status' => 'AKTIF'
+        );
+        // var_dump($data_login);
+        // die;
+        $this->db->where('email', htmlentities($this->input->post('email')));
+        $this->db->update('tbl_login', $data_login);
+        $data_diri = array(
+            'gaji' => 1200000
+        );
+        $this->db->where('id_relawan', htmlentities($this->input->post('id_relawan')));
+        $this->db->update('tbl_relawan', $data_diri);
+    }
+    public function gagal_calon_relawan()
+    {
+        $data_login = array(
+            'status' => 'GAGAL'
+        );
+        $this->db->where('email', htmlentities($this->input->post('email')));
+        $this->db->update('tbl_login', $data_login);
+    }
+    // Kelola Tugas
+    public function hapus_tugas()
+    {
+        $data_tugas = array(
+            'status'          => 'HAPUS'
+        );
+        $this->db->where('id_tugas', $this->input->post('id_tugas'));
+        $this->db->update('tbl_tugas', $data_tugas);
+    }
+    public function ubah_tugas()
+    {
+        $data_tugas = array(
+            'nm_tugas'        => htmlentities($this->input->post('nm_tugas')),
+            'detail_tugas'    => htmlentities($this->input->post('detail_tugas')),
+            'jml_laporan'     => htmlentities($this->input->post('jml_laporan'))
+        );
+        $this->db->where('id_tugas', $this->input->post('id_tugas'));
+        $this->db->update('tbl_tugas', $data_tugas);
     }
 }

@@ -139,13 +139,10 @@
                             </a>
                             <ul class="collapse submenu list-unstyled animated fadeInUp" id="laporan" data-parent="#topAccordion">
                                 <li>
-                                    <a href="component_tabs.html"> Pendaftaran </a>
+                                    <a href="<?= base_url('staff/laporan/pendaftaran') ?>"> Pendaftaran </a>
                                 </li>
                                 <li>
-                                    <a href="component_accordion.html"> Tugas Relawan </a>
-                                </li>
-                                <li>
-                                    <a href="component_modal.html"> Gaji Relawan </a>
+                                    <a href="<?= base_url('staff/laporan/gaji_relawan') ?>"> Gaji Relawan </a>
                                 </li>
                             </ul>
                         </li>

@@ -65,3 +65,40 @@ $('.sukses_hapus_soal').show(function () {
 $('.berhasil_konfirmasi').show(function () {
   swal('Berhasil!', 'Konfirmasi Administrasi!', 'success');
 });
+$('.berhasil_konfirmasi_ujian').show(function () {
+  swal('Berhasil!', 'Konfirmasi Calon Relawan!', 'success');
+});
+// Kelola Relawan Ubah
+$('.sukses_reset_password').show(function () {
+  swal('Berhasil!', 'Password Baru : RELAWAN123abc', 'success');
+});
+$('.sukses_blokir_relawan').show(function () {
+  swal('Berhasil!', 'Relawan Telah Diblokir!', 'success');
+});
+$('.sukses_aktif_relawan').show(function () {
+  swal('Berhasil!', 'Akun Aktif Kembali!', 'success');
+});
+// Kelola Tugas
+$('.sukses_simpan_tugas').show(function () {
+  swal('Berhasil!', 'Berhasil Simpan Tugas!', 'success');
+});
+$('.sukses_hapus_tugas').show(function () {
+  swal('Berhasil!', 'Berhasil Hapus Tugas!', 'success');
+});
+$('.sukses_ubah_tugas').show(function () {
+  swal('Berhasil!', 'Tugas Berhasil Diubah!', 'success');
+});
+// Kelola Bagi Tugas
+$('.sukses_bagi_tugas').show(function () {
+  swal('Berhasil!', 'Tugas Berhasil DIbagi!', 'success');
+});
+$('.gagal_bagi_tugas').show(function () {
+  swal('Opsss...!!!', 'Pelaksana Sudah Mendapat Tugas Yang Sama!', 'error');
+});
+// Kelola Bagi Tugas
+$('.berhasil_gaji').show(function () {
+  swal('Berhasil!', 'Gaji Berhasil Diberikan!', 'success');
+});
+$('.gagal_gaji').show(function () {
+  swal('Opsss...!!!', 'Karyawan sudah menerima gaji bulan ini!', 'error');
+});

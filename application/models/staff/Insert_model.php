@@ -94,4 +94,38 @@ class Insert_model extends CI_Model
         $this->db->where('id_soal', $id_soal);
         $this->db->update('tbl_soal', $data23);
     }
+    function simpan_tugas()
+    {
+        $data_tugas = array(
+            'id_tugas'        => '',
+            'nm_tugas'        => htmlentities($this->input->post('nm_tugas')),
+            'detail_tugas'    => htmlentities($this->input->post('detail_tugas')),
+            'jml_laporan'     => htmlentities($this->input->post('jml_laporan')),
+            'status'          => 'ADA'
+        );
+        $this->db->insert('tbl_tugas', $data_tugas);
+    }
+    function bagi_tugas()
+    {
+        $data_bagi = array(
+            'id_relawan_tugas'   => '',
+            'id_tugas'           => htmlentities($this->input->post('id_tugas')),
+            'id_relawan'         => htmlentities($this->input->post('id_relawan')),
+            'status'             => 'PROSES'
+        );
+        $this->db->insert('tugas_relawan', $data_bagi);
+    }
+    function simpan_gaji($id_relawan)
+    {
+        $cek_gaji = $this->db->get_where('tbl_relawan', ['id_relawan' => $id_relawan])->row_array();
+        $tgl_gaji = date('Y-m-d');
+        $gaji     = $cek_gaji['gaji'];
+        $data_gaji = array(
+            'id_gaji' => '',
+            'id_relawan' => $id_relawan,
+            'jml_gaji' => $gaji,
+            'tgl_gaji' => $tgl_gaji
+        );
+        $this->db->insert('tbl_gaji', $data_gaji);
+    }
 }

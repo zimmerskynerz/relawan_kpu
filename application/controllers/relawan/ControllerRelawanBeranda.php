@@ -42,10 +42,12 @@ class ControllerRelawanBeranda extends CI_Controller
                 $aktifitas    = 'limit';
             elseif ($data_login['status'] == 'UJIAN_SELESAI') :
                 // Relawan Menunggu Konfirmasi Berkas Dari Staff
-                $halaman      = 'ujian';
-                $aktifitas    = 'selesai';
+                $nilai        = $this->db->get_where('tbl_nilai_ujian', ['id_relawan' => $data_diri['id_relawan']])->row_array();
+                $halaman      = 'ujian_selesai';
+                $aktifitas    = 'limit';
             else :
                 // Halaman dimana Relawan sudah diterima dan siap menjalankan tugasnya sebagai relawan demokrasi
+                $nilai        = $this->db->get_where('tbl_nilai_ujian', ['id_relawan' => $data_diri['id_relawan']])->row_array();
                 $halaman      = 'index';
                 $aktifitas    = 'full';
             endif;
@@ -58,7 +60,8 @@ class ControllerRelawanBeranda extends CI_Controller
                 'data_diri'       => $data_diri,
                 'data_login'      => $data_login,
                 'data_konfirmasi' => $data_konfirmasi,
-                'data_bank'       => $data_soal
+                'data_bank'       => $data_soal,
+                'nilai'           => $nilai
             );
             $this->load->view('relawan/include/index', $data);
         else :

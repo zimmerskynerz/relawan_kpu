@@ -51,4 +51,22 @@ class Select_model extends CI_Model
         $query = $this->db->get();
         return $query->row_array();
     }
+    function getDataTugas($id_relawan)
+    {
+        $query = $this->db->select('*');
+        $query = $this->db->from('tugas_relawan as A');
+        $query = $this->db->join('tbl_tugas as B', 'A.id_tugas=B.id_tugas');
+        $query = $this->db->where('A.id_relawan', $id_relawan);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    function getDataTugasDetail($id_relawan, $id_tugas)
+    {
+        $query = $this->db->select('*');
+        $query = $this->db->from('tugas_relawan');
+        $query = $this->db->where('id_relawan', $id_relawan);
+        $query = $this->db->where('id_tugas', $id_tugas);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
 }

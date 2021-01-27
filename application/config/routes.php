@@ -34,15 +34,37 @@ $route['staff/bank_soal/jawabansoal']           = 'staff/ControllerStaffSoal/jaw
 $route['staff/relawan/pendaftaran']             = 'staff/ControllerStaffPendaftaran/index';
 $route['staff/relawan/tampil_berkas/(:any)']    = 'staff/ControllerStaffPendaftaran/tampil_berkas/$1';
 $route['staff/relawan/crudpendaftaran']         = 'staff/ControllerStaffPendaftaran/crudpendaftaran';
+// Menu Halaman Nilai
+$route['staff/relawan/nilai']                   = 'staff/ControllerStaffNilai/index';
+$route['staff/relawan/crudnilai']               = 'staff/ControllerStaffNilai/crudnilai';
+// Menu Halaman Relawan
+$route['staff/relawan/relawan']                 = 'staff/ControllerStaffRelawan/index';
+$route['staff/relawan/crudrelawan']             = 'staff/ControllerStaffRelawan/crudrelawan';
+// Menu Halaman Tugas
+$route['staff/relawan/tugas']                   = 'staff/ControllerStaffTugas/index';
+$route['staff/relawan/detail_tugas/(:any)']     = 'staff/ControllerStaffTugas/detail_tugas/$1';
+$route['staff/relawan/laporan_tugas/(:any)']    = 'staff/ControllerStaffTugas/laporan_tugas/$1';
+$route['staff/relawan/crudtugas']               = 'staff/ControllerStaffTugas/crudtugas';
+// Menu Halaman Gaji
+$route['staff/relawan/gaji']                    = 'staff/ControllerStaffGaji/index';
+$route['staff/relawan/detail_gaji/(:any)']      = 'staff/ControllerStaffGaji/detail_gaji/$1';
+$route['staff/relawan/crudgaji']                = 'staff/ControllerStaffGaji/crudgaji';
+// Menu Laporan
+$route['staff/laporan/pendaftaran']             = 'staff/ControllerStaffLaporan/pendaftaran';
+$route['staff/laporan/gaji_relawan']            = 'staff/ControllerStaffLaporan/gaji_relawan';
 
 
 // Halaman Relawan
 $route['relawan']                                       = 'relawan/ControllerRelawanBeranda/index';
 $route['relawan/beranda']                               = 'relawan/ControllerRelawanBeranda/index';
 $route['relawan/beranda/cruddaftar']                    = 'relawan/ControllerRelawanBeranda/cruddaftar';
+// Halaman Ujian
 $route['relawan/ujian/mulai/(:any)']                    = 'relawan/ControllerRelawanUjian/index/$1';
 $route['relawan/ujian/mulai/(:any)/(:num)']             = 'relawan/ControllerRelawanUjian/index/$1/$2';
 $route['relawan/ujian/store_jawaban']                   = 'relawan/ControllerRelawanUjian/storeJawaban';
 $route['relawan/ujian/cek_number']                      = 'relawan/ControllerRelawanUjian/cekNumber';
 $route['relawan/ujian/cek_soal']                        = 'relawan/ControllerRelawanUjian/cekSoal';
 $route['relawan/ujian/selesai_ujian']                   = 'relawan/ControllerRelawanUjian/selesaiUjian';
+// Hlaman Tugas
+$route['relawan/tugas']                                 = 'relawan/ControllerRelawanTugas/index';
+$route['relawan/tugas/absen_tugas/(:any)']              = 'relawan/ControllerRelawanTugas/absen_tugas/$1';

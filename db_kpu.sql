@@ -50,17 +50,7 @@ CREATE TABLE `tbl_berkas` (
 -- Dumping data untuk tabel `tbl_berkas`
 --
 
-INSERT INTO `tbl_berkas` (`id_relawan`, `nm_berkas`, `link_berkas`) VALUES
-(1, 'ktp', 'fae1fdf7d9770e9f0caf5b4cf642fc32.png'),
-(1, 'ijazah', 'ac7f90953878b09462a7668e1d101015.png'),
-(1, 'foto', '83bc09cda6182502782afea280caaf2d.png'),
-(1, 'surat_parpol', '308505f0a611bfa9140b3c1a0625538f.png'),
-(1, 'surat_kesediaan', '8ffb881b5271b4cc94c37326b408ce92.png'),
-(1, 'surat_pemilih', '4ac3724557f136a697a326b0526a0030.png'),
-(1, 'skck', '6a5506311de1339ebb44e718f7434d72.png'),
-(1, 'bukan_anggotakpu', 'fe8590aaf0b76a4a9a8178f703ff604e.png'),
-(1, 'sertifikat', 'e8188cd7238b4a3b7600aee229e10137.png'),
-(1, 'riwayat_hidup', '175371b83b0815ad03a058e340f231ba.png');
+
 
 -- --------------------------------------------------------
 
@@ -92,63 +82,6 @@ CREATE TABLE `tbl_jawaban` (
 --
 -- Dumping data untuk tabel `tbl_jawaban`
 --
-
-INSERT INTO `tbl_jawaban` (`id_soal`, `jawaban`, `ket_jawaban`) VALUES
-(1, 'A', '23'),
-(1, 'B', 'ewfsdf'),
-(1, 'C', 'dsfsdf'),
-(1, 'D', 'dsfsdf'),
-(1, 'E', 'dsfsdf'),
-(2, 'A', 'lembaga hierarkis'),
-(2, 'B', 'lembaga structural'),
-(2, 'C', 'lembaga permanen (tetap)'),
-(2, 'D', 'lembaga administrasi pemilu'),
-(2, 'E', 'lembaga non-struktural'),
-(3, 'A', 'dewan etik'),
-(3, 'B', 'komisi etik'),
-(3, 'C', 'majelis kehormatan'),
-(3, 'D', 'dewan kehormatan'),
-(3, 'E', 'mahkamah etik'),
-(4, 'A', 'tidak benar'),
-(4, 'B', 'benar'),
-(4, 'C', 'ragu-ragu'),
-(4, 'D', 'tidak Salah'),
-(4, 'E', 'salah'),
-(5, 'A', 'pernyataan salah dan alasan benar'),
-(5, 'B', 'pernyataan salah dan alasan salah'),
-(5, 'C', 'pernyataan benar dan alasan salah'),
-(5, 'D', 'pernyataan benar dan alasan benar, ada hubungan sebab akibat'),
-(5, 'E', 'pernyataan benar dan alasan benar, tidak ada hubungan sebab akibat'),
-(6, 'A', 'tidak tahu'),
-(6, 'B', 'ragu-ragu'),
-(6, 'C', 'salah'),
-(6, 'D', 'benar'),
-(6, 'E', 'semua benar'),
-(7, 'A', 'tidak tahu'),
-(7, 'B', 'kurang benar'),
-(7, 'C', 'semua salah'),
-(7, 'D', 'semua benar'),
-(7, 'E', 'salah'),
-(8, 'A', 'pernyataan benar dan alasan benar, tidak ada hubungan sebab akibat'),
-(8, 'B', 'pernyataan benar dan alasan benar, ada hubungan sebab akibat'),
-(8, 'C', 'pernyataan benar dan alasan salah'),
-(8, 'D', 'pernyataan salah dan alasan salah'),
-(8, 'E', 'pernyataan salah dan alasan benar'),
-(9, 'A', 'tidak menghadiri rapat pleno yang menjadi tugas dan kewajibannya karena sakit'),
-(9, 'B', 'melanggar sumpah/janji jabatan dan/atau kode etik penyelenggara Pemilu'),
-(9, 'C', 'melakukan perbuatan yang terbukti menghambat PPK, PPS, KPPS, PPLN dan KPPSLN dalam mengambil keputusan dan penetapan sebagaimana ketentuan peraturan perundang-undangan'),
-(9, 'D', 'dipidana penjara berdasarkan putusan pengadilan yang telah memperoleh kekuatan hukum tetap karena melakukan tindak pidana Pemilu dan/atau tindak pidana lainnya'),
-(9, 'E', 'semua jawaban benar'),
-(10, 'A', 'UU Nomor 11/2006, UU Nomor 8/2012 dan UU Nomor 42/2008'),
-(10, 'B', 'UU Nomor 42/2018, UU Nomor 8/2011 dan UU Nomor 11/2006'),
-(10, 'C', 'UU Nomor 15/2011, UU Nomor 8/2012 dan UU Nomor 10/2016'),
-(10, 'D', 'UU Nomor 11/2011, UU Nomor 8/2012 dan UU Nomor 42/2008'),
-(10, 'E', 'UU Nomor 15/2012, UU Nomor 8/2011 dan UU Nomor 24/2008'),
-(11, 'A', 'pembubaran partai politik'),
-(11, 'B', 'sanksi pidana pemilu'),
-(11, 'C', 'sanksi etik'),
-(11, 'D', 'sanksi administrasi Pemilu'),
-(11, 'E', 'sanksi tidak mengikuti pemilu berikutnya');
 
 -- --------------------------------------------------------
 
@@ -202,9 +135,7 @@ CREATE TABLE `tbl_login` (
 --
 
 INSERT INTO `tbl_login` (`id_login`, `email`, `password`, `level`, `status`, `tgl_daftar`) VALUES
-(1, 'staff@kpu.co.id', '$2y$10$MqUBpjBHKNir5BA0u79hXuj/2n3Xs2iM3/vrpEzPD.37/lKXwvA7a', 'staff', 'AKTIF', '2021-01-01'),
-(2, 'staff01@kpu.co.id', '$2y$10$5hg3i51jWY4AdjGjM0gGkeLyDth19dg9xDSVLLkDEiKpNKdlsye3a', 'staff', 'AKTIF', '2021-01-18'),
-(3, 'rama@gmail.com', '$2y$10$MqUBpjBHKNir5BA0u79hXuj/2n3Xs2iM3/vrpEzPD.37/lKXwvA7a', 'relawan', 'UJIAN', '2021-01-22');
+(1, 'staff@kpu.co.id', '$2y$10$MqUBpjBHKNir5BA0u79hXuj/2n3Xs2iM3/vrpEzPD.37/lKXwvA7a', 'staff', 'AKTIF', '2021-01-01');
 
 -- --------------------------------------------------------
 
@@ -238,9 +169,6 @@ CREATE TABLE `tbl_periode` (
 -- Dumping data untuk tabel `tbl_periode`
 --
 
-INSERT INTO `tbl_periode` (`id_periode`, `tahun`, `tgl_mulai`, `tgl_selesai`, `jml_relawan`, `status`) VALUES
-(1, 2021, '2021-01-19', '2021-02-06', 23, 'HAPUS'),
-(2, 2021, '2021-01-20', '2021-02-06', 23, 'ADA');
 
 -- --------------------------------------------------------
 
@@ -264,9 +192,6 @@ CREATE TABLE `tbl_relawan` (
 -- Dumping data untuk tabel `tbl_relawan`
 --
 
-INSERT INTO `tbl_relawan` (`id_login`, `id_relawan`, `nm_relawan`, `tgl_lahir`, `kota_lahir`, `j_kelamin`, `no_hp`, `alamat`, `gaji`) VALUES
-(3, 1, 'Rama Restu Wardana', '2021-01-23', 'Kudus', 'L', '0895411547434', 'Jl. Sumber - Hadipolo, RT. 05/ RW.05, Kec. Jekulo, Kab. Kudus - Jawa Tengah', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -284,21 +209,7 @@ CREATE TABLE `tbl_soal` (
 --
 -- Dumping data untuk tabel `tbl_soal`
 --
-
-INSERT INTO `tbl_soal` (`id_soal`, `id_ujian`, `soal`, `jawaban`, `status`) VALUES
-(1, 1, '<p>asasas</p>', 'C', 'HAPUS'),
-(2, 1, '<p><span xss=removed>Kedudukan KPU, KPU/KIP Provinsi, dan KPU/KIP Kabupaten/Kota secara kelembagaan adalah:</span></p>', 'D', 'ADA'),
-(3, 1, '<p><span xss=removed>Sesuai peraturan KPU (PKPU) Nomor 10 Tahun 2018 tentang sosialisasi, pendidikan pemilih dan partisipasi masyarakat. Apabila terdapat rekomendasi dari Badan Pengawas Pemilu (Bawaslu) terhadap pelanggaran etika lembaga survei dan jajak pendapat dan penghitungan cepat hasil pemilu yang berawal dari pengaduan masyarakat. Maka KPU dapat membentuk:</span></p>', 'A', 'ADA'),
-(4, 1, '<p><span xss=removed>Dalam penyusunan Daerah Pemilihan (Dapil), prinsip kesetaraan nilai suara, yaitu mengupayakan nilai suara atau harga kursi yang setara antara 1 (satu) dapil dengan dapil lainnya dengan prinsip 1 (satu) suara, 1 (satu) nilai.</span></p>', 'B', 'ADA'),
-(5, 1, '<p xss=removed>Sesuai ketentuan Pasal 75 ayat (1) UU Nomor 7 Tahun 2017 tentang Pemilihan Umum, bahwa kedudukan Peraturan KPU dan Keputusan KPU adalah untuk menyelenggarakan Pemilu.</p>\r\n<p xss=removed>Sebab</p>\r\n<p xss=removed>Peraturan KPU yang berkaitan dengan pelaksanaan tahapan Pemilu wajib dikonsultasikan oleh Komisi Pemilihan Umum dengan Dewan Perwakilan Rakyat (DPR) dan Pemerintah melalui Rapat Dengar Pendapat (RDP).</p>', 'D', 'ADA'),
-(6, 1, '<p><span xss=removed>Dalam pasal 19 ayat (1) UUD Tahun 1945 menegaskan bahwa anggota Dewan Perwakilan Rakyat (DPR) berasal dari Partai Politik (Parpol) yang dipilih rakyat melalui Pemilihan Umum</span></p>', 'C', 'ADA'),
-(7, 1, '<p><span xss=removed>Bila ada putusan Mahkamah Agung (MA) terkait upaya hukum atas putusan pelanggaran administrasi Pemilu bersifat final dan mengikat.</span></p>', 'E', 'ADA'),
-(8, 1, '<p xss=removed>Dalam hal terjadi rapat pleno KPU/KIP Kabupaten/Kota untuk menetapkan hasil Pemilu tidak tercapai kuorum, maka rapat pleno ditunda paling lama 3 (tiga) jam.</p>\r\n<p xss=removed>Sebab</p>\r\n<p xss=removed>Dalam rapat pleno KPU/KIP Kabupaten/Kota untuk menetapkan hasil Pemilu tidak dilakukan pemungutan suara</p>', 'B', 'ADA'),
-(9, 1, '<p><span xss=removed>Berikut ini persyaratan pemberhentian dengan tidak hormat bagi anggota PPK, PPS, KPPS, PPLN dan KPPSLN, kecuali:</span></p>', 'A', 'ADA'),
-(10, 1, '<p><span xss=removed>UU Nomor 7 Tahun 2017 tentang Pemilihan Umum (Pemilu) mencabut beberapa UU, yaitu:</span></p>', 'C', 'ADA'),
-(11, 1, '<p><span xss=removed>Apabila Partai Politik yang memenuhi syarat mengajukan Pasangan Calon Presiden dan Wakil Presiden namun tidak mengajukan bakal pasangan calon, maka Partai Politik tersebut dapat dikenai sanksi berupa:</span></p>', 'E', 'ADA');
-
--- --------------------------------------------------------
+- --------------------------------------------------------
 
 --
 -- Struktur dari tabel `tbl_staff`
