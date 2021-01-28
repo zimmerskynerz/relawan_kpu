@@ -54,4 +54,29 @@ class Insert_model extends CI_Model
             }
         }
     }
+    function kirim_laporan()
+    {
+        $tgl_ini                 = date('Y-m-d');
+        $config['upload_path']   = './assets/berkas_tugas';
+        $config['allowed_types'] = 'pdf|doc|docx|ppt|zip|rar';
+        $config['encrypt_name']  = true;
+        $config['overwrite']     = true;
+        $config['max_size']      = 30024; // 30MB
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('link_laporan')) :
+            $_FILES['file']['name'] = $_FILES['link_laporan']['name'];
+            $_FILES['file']['type'] = $_FILES['link_laporan']['type'];
+            $_FILES['file']['tmp_name'] = $_FILES['link_laporan']['tmp_name'];
+            $_FILES['file']['size'] = $_FILES['link_laporan']['size'];
+            $uploadData = $this->upload->data();
+            $data = array(
+                'tgl_laporan' => $tgl_ini,
+                'id_relawan_tugas' => htmlspecialchars($this->input->post('id_relawan_tugas')),
+                'link_laporan' => $uploadData['file_name'],
+                'komentar' => null,
+                'status' => 'KONFIRMASI'
+            );
+            $this->db->insert('relawan', $data);
+        endif;
+    }
 }

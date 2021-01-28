@@ -60,6 +60,8 @@ class ControllerStaffTugas extends CI_Controller
         $cek_data = $this->db->get_where('tbl_login', ['id_login' => $this->session->userdata('id_login')])->row_array();
         if ($cek_data['level'] == 'staff') :
             $data_laporan = $this->db->get_where('relawan', ['id_relawan_tugas' => $id_relawan_tugas])->result();
+            // var_dump($data_laporan);
+            // die;
             $data = array(
                 'folder'              => 'tugas',
                 'halaman'             => 'laporan',
@@ -99,6 +101,20 @@ class ControllerStaffTugas extends CI_Controller
                 $this->session->set_flashdata('sukses_bagi_tugas', '<div class="sukses_bagi_tugas"></div>');
             endif;
             redirect('staff/relawan/detail_tugas/' . $id_tugas . '');
+        endif;
+        if (isset($_POST['terima_laporan'])) :
+            # code...
+            $id_relawan_tugas = $this->input->post('id_relawan_tugas');
+            $this->update_model->terima_laporan();
+            $this->session->set_flashdata('sukses_terima_laporan', '<div class="sukses_terima_laporan"></div>');
+            redirect('staff/relawan/laporan_tugas/' . $id_relawan_tugas . '');
+        endif;
+        if (isset($_POST['revisi_laporan'])) :
+            # code...
+            $id_relawan_tugas = $this->input->post('id_relawan_tugas');
+            $this->update_model->revisi_laporan();
+            $this->session->set_flashdata('sukses_revisi_laporan', '<div class="sukses_revisi_laporan"></div>');
+            redirect('staff/relawan/laporan_tugas/' . $id_relawan_tugas . '');
         endif;
     }
 }

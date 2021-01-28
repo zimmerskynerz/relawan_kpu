@@ -88,17 +88,21 @@ $('.sukses_hapus_tugas').show(function () {
 $('.sukses_ubah_tugas').show(function () {
   swal('Berhasil!', 'Tugas Berhasil Diubah!', 'success');
 });
-// Kelola Bagi Tugas
 $('.sukses_bagi_tugas').show(function () {
   swal('Berhasil!', 'Tugas Berhasil DIbagi!', 'success');
 });
 $('.gagal_bagi_tugas').show(function () {
   swal('Opsss...!!!', 'Pelaksana Sudah Mendapat Tugas Yang Sama!', 'error');
 });
-// Kelola Bagi Tugas
 $('.berhasil_gaji').show(function () {
   swal('Berhasil!', 'Gaji Berhasil Diberikan!', 'success');
 });
 $('.gagal_gaji').show(function () {
   swal('Opsss...!!!', 'Karyawan sudah menerima gaji bulan ini!', 'error');
+});
+$('.sukses_revisi_laporan').show(function () {
+  swal('Berhasil!', 'Konfirmasi Revisi Laporan Tugas!', 'success');
+});
+$('.sukses_terima_laporan').show(function () {
+  swal('Berhasil!', 'Konfirmasi Terima Laporan Tugas!', 'success');
 });

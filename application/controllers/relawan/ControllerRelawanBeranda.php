@@ -27,41 +27,50 @@ class ControllerRelawanBeranda extends CI_Controller
             if ($data_login['status'] == 'PROSES_DAFTAR') :
                 // Relawan Baru Daftar atau Ditolak pendaftarannya karena tidak memenuhi syarat
                 $halaman      = 'proses_daftar';
+                $folder       = 'beranda';
                 $aktifitas    = 'limit';
             elseif ($data_login['status'] == 'GAGAL') :
                 // Relawan Menunggu Konfirmasi Berkas Dari Staff
                 $halaman      = 'gagal';
+                $folder       = 'beranda';
                 $aktifitas    = 'limit';
             elseif ($data_login['status'] == 'DAFTAR') :
                 // Relawan Menunggu Konfirmasi Berkas Dari Staff
                 $halaman      = 'konfirmasi_berkas';
+                $folder       = 'beranda';
                 $aktifitas    = 'limit';
             elseif ($data_login['status'] == 'UJIAN') :
                 // Halaman dimana Relawan Dikonfirmasi Lulus Administrasi dan siap ujian
                 $halaman      = 'ujian';
+                $folder       = 'beranda';
                 $aktifitas    = 'limit';
             elseif ($data_login['status'] == 'UJIAN_SELESAI') :
                 // Relawan Menunggu Konfirmasi Berkas Dari Staff
                 $nilai        = $this->db->get_where('tbl_nilai_ujian', ['id_relawan' => $data_diri['id_relawan']])->row_array();
                 $halaman      = 'ujian_selesai';
+                $folder       = 'beranda';
                 $aktifitas    = 'limit';
             else :
                 // Halaman dimana Relawan sudah diterima dan siap menjalankan tugasnya sebagai relawan demokrasi
                 $nilai        = $this->db->get_where('tbl_nilai_ujian', ['id_relawan' => $data_diri['id_relawan']])->row_array();
                 $halaman      = 'index';
+                $folder       = 'tugas';
                 $aktifitas    = 'full';
             endif;
+            $id_relawan = $data_diri['id_relawan'];
+            $data_tugas = $this->select_model->getDataTugas($id_relawan);
             $data = array(
                 // Halaman Data FOlder
                 'aktivitas'       => $aktifitas,
-                'folder'          => 'beranda',
+                'folder'          => $folder,
                 'halaman'         => $halaman,
                 // halaman data diri
                 'data_diri'       => $data_diri,
                 'data_login'      => $data_login,
                 'data_konfirmasi' => $data_konfirmasi,
                 'data_bank'       => $data_soal,
-                'nilai'           => $nilai
+                'nilai'           => $nilai,
+                'data_tugas'  => $data_tugas
             );
             $this->load->view('relawan/include/index', $data);
         else :

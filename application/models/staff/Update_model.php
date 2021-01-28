@@ -243,4 +243,24 @@ class Update_model extends CI_Model
         $this->db->where('id_tugas', $this->input->post('id_tugas'));
         $this->db->update('tbl_tugas', $data_tugas);
     }
+    public function terima_laporan()
+    {
+        $data_tugas = array(
+            'komentar' => 'Sudah Diterima',
+            'status'   => 'SELESAI'
+        );
+        $this->db->where('id_relawan_tugas', $this->input->post('id_relawan_tugas'));
+        $this->db->where('tgl_laporan', $this->input->post('tgl_laporan'));
+        $this->db->update('relawan', $data_tugas);
+    }
+    public function revisi_laporan()
+    {
+        $data_tugas = array(
+            'komentar' => htmlentities($this->input->post('komentar')),
+            'status'   => 'REVISI'
+        );
+        $this->db->where('id_relawan_tugas', $this->input->post('id_relawan_tugas'));
+        $this->db->where('tgl_laporan', $this->input->post('tgl_laporan'));
+        $this->db->update('relawan', $data_tugas);
+    }
 }

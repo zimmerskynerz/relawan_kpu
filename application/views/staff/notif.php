@@ -32,6 +32,8 @@
 <?= $this->session->flashdata('sukses_simpan_tugas'); ?>
 <?= $this->session->flashdata('sukses_hapus_tugas'); ?>
 <?= $this->session->flashdata('sukses_ubah_tugas'); ?>
+<?= $this->session->flashdata('sukses_terima_laporan'); ?>
+<?= $this->session->flashdata('sukses_revisi_laporan'); ?>
 <!-- Kelola Bagi Tugas -->
 <?= $this->session->flashdata('sukses_bagi_tugas'); ?>
 <?= $this->session->flashdata('gagal_bagi_tugas'); ?>

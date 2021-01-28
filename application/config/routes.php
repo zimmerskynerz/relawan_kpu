@@ -68,3 +68,7 @@ $route['relawan/ujian/selesai_ujian']                   = 'relawan/ControllerRel
 // Hlaman Tugas
 $route['relawan/tugas']                                 = 'relawan/ControllerRelawanTugas/index';
 $route['relawan/tugas/absen_tugas/(:any)']              = 'relawan/ControllerRelawanTugas/absen_tugas/$1';
+$route['relawan/tugas/crudabsen']                       = 'relawan/ControllerRelawanTugas/crudabsen';
+// Halaman Relawan
+$route['relawan/sertifikat']                            = 'relawan/ControllerRelawanSertifikat/index';
+$route['relawan/profile']                               = 'relawan/ControllerRelawanProfile/index';
