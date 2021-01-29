@@ -72,3 +72,5 @@ $route['relawan/tugas/crudabsen']                       = 'relawan/ControllerRel
 // Halaman Relawan
 $route['relawan/sertifikat']                            = 'relawan/ControllerRelawanSertifikat/index';
 $route['relawan/profile']                               = 'relawan/ControllerRelawanProfile/index';
+$route['relawan/sertifikat']                            = 'relawan/SertifikatController/index';
+$route['relawan/sertifikat/pdf']                        = 'relawan/SertifikatController/pdf';
