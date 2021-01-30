@@ -74,3 +74,5 @@ $route['relawan/sertifikat']                            = 'relawan/ControllerRel
 $route['relawan/profile']                               = 'relawan/ControllerRelawanProfile/index';
 $route['relawan/sertifikat']                            = 'relawan/SertifikatController/index';
 $route['relawan/sertifikat/pdf']                        = 'relawan/SertifikatController/pdf';
+$route['relawan/profile']                               = 'relawan/ProfilController/index';
+$route['relawan/profile/update']                        = 'relawan/ProfilController/update';

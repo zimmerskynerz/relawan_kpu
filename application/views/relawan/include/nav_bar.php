@@ -39,7 +39,7 @@
                             </a>
                         </li>
                         <?php if ($aktivitas != 'limit') : ?>
-                            <li class="menu single-menu <?php echo $this->uri->segment(2) == 'periode' ? 'active' : '' ?>">
+                            <li class="menu single-menu <?php echo $this->uri->segment(2) == 'tugas' ? 'active' : '' ?>">
                                 <a href="<?= base_url('relawan/tugas') ?>">
                                     <div class="">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book">
@@ -54,7 +54,7 @@
                                     </div>
                                 </a>
                             </li>
-                            <?php if (isset($cert) && $cert) : ?>
+                            <?php if (isCertable()) : ?>
                                 <li class="menu single-menu <?php echo $this->uri->segment(2) == 'sertifikat' ? 'active' : '' ?>">
                                     <a href="<?= base_url('relawan/sertifikat') ?>">
                                         <div class="">

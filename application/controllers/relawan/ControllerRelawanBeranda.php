@@ -1,7 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
 use Carbon\Carbon;
-use Carbon\CarbonInterval;
 
 class ControllerRelawanBeranda extends CI_Controller
 {
@@ -24,7 +23,6 @@ class ControllerRelawanBeranda extends CI_Controller
         $data_konfirmasi = $this->select_model->getKonfirmasi();
         $data_soal  = $this->select_model->getDataSoalPeriode();
         $data_soal  = self::isSelesai($data_soal);
-        $cert       = self::isCert($data_login['tgl_daftar']);
 
         if ($data_login['level'] == 'relawan') :
             if ($data_login['status'] == 'PROSES_DAFTAR') :
@@ -74,7 +72,6 @@ class ControllerRelawanBeranda extends CI_Controller
                 'data_bank'       => $data_soal,
                 'nilai'           => $nilai,
                 'data_tugas'      => $data_tugas,
-                'cert'            => $cert
             );
             $this->load->view('relawan/include/index', $data);
         else :
@@ -120,21 +117,6 @@ class ControllerRelawanBeranda extends CI_Controller
         }
 
         return $new_data_ujian;
-    }
-
-    /**
-     * check sertifikat (+3 bulan)
-     * 
-     * @param date $date
-     * @return boolean
-     */
-    public static function isCert($date)
-    {
-        $start = new Carbon($date);
-        $later = $start->addMonth(3)->toDateString();
-        $now = Carbon::now()->toDateString();
-
-        return ($now >= $later) ? true : false;
     }
 }
         
