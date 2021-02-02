@@ -26,7 +26,6 @@
                                         <th class="text-center">Periode</th>
                                         <th class="text-center">Pendaftaran</th>
                                         <th class="text-center">Maximal</th>
-                                        <th class="text-center">Pendaftar</th>
                                         <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
@@ -39,7 +38,6 @@
                                             <td style="text-align: center;"><?= $Data_periode->tahun ?></td>
                                             <td><?= date('d F Y', strtotime($Data_periode->tgl_mulai)) ?> - <?= date('d F Y', strtotime($Data_periode->tgl_selesai)) ?></td>
                                             <td style="text-align: center;"><?= $Data_periode->jml_relawan ?> Orang</td>
-                                            <td style="text-align: center;"><?= $Data_periode->jml_relawan ?> Orang</td>
                                             <td style="text-align: center;">
                                                 <a id="detail_periode" href="javascript:void(0);" class="bs-tooltip" data-toggle="modal" data-target="#periode_detail" data-placement="top" title="" data-original-title="Ubah" data-id_periode="<?= $Data_periode->id_periode ?>" data-tahun="<?= $Data_periode->tahun ?>" data-tgl_mulai="<?= $Data_periode->tgl_mulai ?>" data-tgl_selesai="<?= $Data_periode->tgl_selesai ?>" data-jml_relawan="<?= $Data_periode->jml_relawan ?>">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">
@@ -47,12 +45,12 @@
                                                         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                                                     </svg>
                                                 </a>
-                                                <a href="<?= base_url('staff/periode/list_pendaftar/' . $Data_periode->id_periode . '') ?>" class="bs-tooltip" data-placement="top" title="" data-original-title="Pendaftar">
+                                                <!-- <a href="<?= base_url('staff/periode/list_pendaftar/' . $Data_periode->id_periode . '') ?>" class="bs-tooltip" data-placement="top" title="" data-original-title="Pendaftar">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
                                                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                                         <circle cx="12" cy="12" r="3"></circle>
                                                     </svg>
-                                                </a>
+                                                </a> -->
                                             </td>
                                         </tr>
                                     <?php

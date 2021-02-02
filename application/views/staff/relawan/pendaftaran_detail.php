@@ -88,7 +88,7 @@
                                                             <td><?= $Data_berkas_Calon->link_berkas ?></td>
                                                             <td><?= $Data_berkas_Calon->nm_berkas ?></td>
                                                             <td>
-                                                                <a href="<?= base_url('staff/relawan/tampil_berkas/' . $Data_berkas_Calon->link_berkas . '') ?>" class="bs-tooltip" data-placement="top" title="" data-original-title="Lihat Soal">
+                                                                <a href="<?= base_url('assets/berkas/' . $Data_berkas_Calon->link_berkas . '') ?>" class="bs-tooltip" data-placement="top" title="" data-original-title="Lihat Soal">
                                                                     Link Berkas!
                                                                 </a>
                                                             </td>

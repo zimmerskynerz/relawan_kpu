@@ -45,7 +45,7 @@
                                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                     <circle cx="12" cy="7" r="4"></circle>
                                 </svg>
-                                <input required id="nm_lengkap" name="nm_lengkap" type="text" class="form-control" required placeholder="Nama Lengkap">
+                                <input required id="nm_relawan" name="nm_relawan" type="text" class="form-control" required placeholder="Nama Lengkap">
                             </div>
                             <div id="email-field" class="field-wrapper input">
                                 <label for="email">EMAIL</label>

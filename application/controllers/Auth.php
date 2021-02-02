@@ -80,7 +80,6 @@ class Auth extends CI_Controller
 		$email     = htmlentities($this->input->post('email'));
 		$cek_email = $this->db->get_where('tbl_login', ['email' => $email])->row_array();
 		if ($cek_email > 1) :
-			# code...
 			$this->session->set_flashdata('email_ada', '<div class="alert alert-danger" id="email_ada" role="alert">Email sudah terdaftar!</div>');
 			redirect('daftar');
 		else :

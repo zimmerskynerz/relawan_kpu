@@ -7,7 +7,7 @@ class Insert_model extends CI_Model
         $data_login = array(
             'id_login'    => '',
             'email'       => htmlentities($this->input->post('email')),
-            'password'    => password_hash('STAFF123abc', PASSWORD_DEFAULT),
+            'password'    => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
             'level'       => 'relawan',
             'status'      => 'PROSES_DAFTAR',
             'tgl_daftar'  => date('Y-m-d')
@@ -31,7 +31,7 @@ class Insert_model extends CI_Model
     {
         $id_relawan = htmlspecialchars($this->input->post('id_relawan'));
         $config['upload_path']          = './assets/berkas';
-        $config['allowed_types']        = 'jpg|png|gif|jpeg';
+        $config['allowed_types']        = 'jpg|png|gif|jpeg|pdf|doc|docx';
         $config['encrypt_name']         = true;
         $config['overwrite']            = true;
         $config['max_size']             = 10024; // 10MB
